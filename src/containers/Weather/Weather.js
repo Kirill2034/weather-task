@@ -21,6 +21,8 @@ class Weather extends React.Component {
         listCity: []
     }
 
+    newState = {}
+
     onChangeText = event => {
         this.setState({
             value: event.target.value
@@ -29,8 +31,9 @@ class Weather extends React.Component {
 
     getWeatherHandler = debounce(async () => {
 
-        // const api_url = await fetch( `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=536ed34d2858d4e397f4175a4e5395a6`)
-        // const data = await api_url.json()
+        const newState = {
+            
+        }
 
         if (this.state.value) {
 
@@ -75,18 +78,6 @@ class Weather extends React.Component {
                 errorMessage: true
             })
         }
-
-        // if (this.state.temp > 0 && this.state.humidity > 50) {
-        //     this.setState({
-        //         rainfall: 'Возможны осадки в виде дождя',
-        //         class: 'fa fa-tint'
-        //     })
-        // } else {
-        //     this.setState({
-        //         rainfall: 'Возможны осадки в виде снега',
-        //         class: 'fa fa-snowflake'
-        //     })
-        // }
    }, 300)
 
    getCitiesHandler = debounce(async () => {
