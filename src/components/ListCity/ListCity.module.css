@@ -1,0 +1,18 @@
+.ListCity {
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    justify-content: flex-start;
+    color: #000;
+    background-color: #fff;
+    padding: 0 10px;
+    transition: all .3 ease-in-out;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: .5px;
+}
+
+.ListCity:hover {
+    background-color: rgba(0, 0, 0, .3);
+    cursor: pointer
+}

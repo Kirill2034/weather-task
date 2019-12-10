@@ -1,0 +1,10 @@
+form > input {
+    outline: none;
+    width: 250px;
+    padding: 5px;
+}
+
+form > button {
+    padding: 5px;
+    cursor: pointer;
+}

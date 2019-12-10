@@ -1,0 +1,19 @@
+.Info {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: #eee;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, .5);
+}
+
+.Info p {
+    font-size: 20px;
+}
+
+.Info i {
+    font-size: 30px;
+}
