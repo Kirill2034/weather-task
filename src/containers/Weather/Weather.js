@@ -21,8 +21,6 @@ class Weather extends React.Component {
         listCity: []
     }
 
-    newState = {}
-
     onChangeText = event => {
         this.setState({
             value: event.target.value
@@ -30,10 +28,6 @@ class Weather extends React.Component {
     }
 
     getWeatherHandler = debounce(async () => {
-
-        const newState = {
-            
-        }
 
         if (this.state.value) {
 
