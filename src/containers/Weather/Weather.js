@@ -29,19 +29,18 @@ class Weather extends React.Component {
 
     getWeatherHandler = debounce(async () => {
         try {
-            const newState = {}
+        const newState = {}
 
         if (this.state.value) {
 
-            const api_url = await fetch( `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=536ed34d2858d4e397f4175a4e5395a6`)
-            const data = await api_url.json()
+            const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=536ed34d2858d4e397f4175a4e5395a6`)
+            const data = await response.json()
             const temp = Math.floor(data.main.temp - 273.15)
 
             newState.temp = temp
             newState.humidity = data.main.humidity
             newState.infoWeather = true
             newState.errorMessage = false
-
 
             if (newState.temp > 0 && newState.humidity >= 50) {
 
@@ -69,11 +68,9 @@ class Weather extends React.Component {
         }
 
         this.setState(newState)
-        } catch(e) {
-            console.log(e)
-        }
-
-        
+    } catch(e) {
+        console.log(e)
+    }
    }, 300)
 
 
