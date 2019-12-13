@@ -28,51 +28,54 @@ class Weather extends React.Component {
     }
 
     getWeatherHandler = debounce(async () => {
+        try {
+            const newState = {}
 
         if (this.state.value) {
 
             const api_url = await fetch( `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=536ed34d2858d4e397f4175a4e5395a6`)
             const data = await api_url.json()
-
             const temp = Math.floor(data.main.temp - 273.15)
-            this.setState({
-                temp,
-                humidity: data.main.humidity,
-                infoWeather: true,
-                errorMessage: false
-            })
+
+            newState.temp = temp
+            newState.humidity = data.main.humidity
+            newState.infoWeather = true
+            newState.errorMessage = false
 
 
-            if (this.state.temp > 0 && this.state.humidity > 50) {
-                this.setState({
-                    rainfall: 'Возможны осадки в виде дождя',
-                    class: 'fa fa-tint'
-                })
+            if (newState.temp > 0 && newState.humidity >= 50) {
+
+                newState.rainfall = 'Возможны осадки в виде дождя'
+                newState.class = 'fa fa-tint'
+
             } else {
-                this.setState({
-                    rainfall: 'Возможны осадки в виде снега',
-                    class: 'fa fa-snowflake'
-                })
+
+                newState.rainfall = 'Возможны осадки в виде снега'
+                newState.class = 'fa fa-snowflake'
             }
 
             if (!!data.name) {
-                this.setState({
-                    city: data.name
-                })
+                newState.city = data.name
             }
 
         } else {
-            this.setState({
-                infoWeather: false,
-                value: '',
-                city: null,
-                temp: null,
-                humidity: null,
-                rainfall: null,
-                errorMessage: true
-            })
+            newState.infoWeather = false
+            newState.value = ''
+            newState.city = null
+            newState.temp = null
+            newState.humidity = null
+            newState.rainfall = null
+            newState.errorMessage = true 
         }
+
+        this.setState(newState)
+        } catch(e) {
+            console.log(e)
+        }
+
+        
    }, 300)
+
 
    getCitiesHandler = debounce(async () => {
 
@@ -118,16 +121,15 @@ class Weather extends React.Component {
                     )
                 })}
                 {this.state.errorMessage ? <p style={{color: 'red'}}>Введите город</p> : null}
-                {this.state.infoWeather 
-                ?   <Info
+                {this.state.infoWeather &&
+                 <Info
                     city={this.state.city}
                     temp={this.state.temp}
                     humidity={this.state.humidity}
                     rainfall={this.state.rainfall}
                     class={this.state.class}
                     /> 
-
-                : null}
+                }
             </div>
         )
     }
