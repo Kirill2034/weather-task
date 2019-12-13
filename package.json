@@ -2,6 +2,7 @@
   "name": "weather-task",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "debounce": "^1.2.0",
     "react": "^16.12.0",

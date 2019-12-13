@@ -33,7 +33,7 @@ class Weather extends React.Component {
 
         if (this.state.value) {
 
-            const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=536ed34d2858d4e397f4175a4e5395a6`)
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=536ed34d2858d4e397f4175a4e5395a6`)
             const data = await response.json()
             const temp = Math.floor(data.main.temp - 273.15)
 
@@ -84,7 +84,7 @@ class Weather extends React.Component {
 
         } else {
 
-            const response = await fetch(`http://autocomplete.geocoder.api.here.com/6.2/suggest.json?app_id=8yvRrk4W4aaaD4r6R174&app_code=44jQRPjWC1J4gQBmEPYW4w&query=${this.state.value}`)
+            const response = await fetch(`https://autocomplete.geocoder.api.here.com/6.2/suggest.json?app_id=8yvRrk4W4aaaD4r6R174&app_code=44jQRPjWC1J4gQBmEPYW4w&query=${this.state.value}`)
             const data = await response.json();
 
             const listCity = data.suggestions.map((suggestion) => {
